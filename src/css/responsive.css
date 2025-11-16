@@ -1,0 +1,134 @@
+/* Responsive.css - Additional Responsive Styles */
+
+/* Mobile First Approach - Additional breakpoints */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .navbar-container {
+    padding: 0 2rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .features-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .home-container,
+  .admin-container {
+    max-width: 1200px;
+  }
+}
+
+/* Touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .btn,
+  .candidate-card,
+  .feature-card {
+    transition: none;
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .footer,
+  .ballot-actions,
+  .review-actions,
+  .admin-tabs {
+    display: none;
+  }
+  
+  .page-container {
+    background: white;
+  }
+  
+  .candidate-card,
+  .result-item {
+    break-inside: avoid;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    border: 2px solid currentColor;
+  }
+  
+  .candidate-card {
+    border-width: 3px;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #1f2937;
+    --bg-secondary: #111827;
+    --bg-dark: #000000;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --border-color: #374151;
+  }
+  
+  body {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+  }
+  
+  .navbar {
+    background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 100%);
+  }
+  
+  .feature-card,
+  .election-info-box,
+  .auth-box,
+  .stat-card,
+  .party-result-card,
+  .position-results,
+  .table-container {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+  }
+  
+  .form-input {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+  }
+  
+  .modal-content {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+  }
+}

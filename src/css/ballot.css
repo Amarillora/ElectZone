@@ -1,0 +1,1379 @@
+/* Ballot.css - Voting Pages */
+
+/* Page entry animation */
+.ballot-container, .review-container {
+  flex: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ballot-header, .review-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
+}
+
+.ballot-header h1, .review-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ballot-title-glow {
+  color: white !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: white !important;
+  animation: titleGlow 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.5));
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.5));
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.8));
+    text-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
+  }
+}
+
+.voter-info {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.voter-info-glow {
+  color: var(--secondary-color);
+  font-weight: 600;
+  text-shadow: 0 0 15px rgba(0, 217, 255, 0.5),
+               0 0 25px rgba(0, 217, 255, 0.3);
+  animation: voterGlow 2s ease-in-out infinite;
+}
+
+@keyframes voterGlow {
+  0%, 100% {
+    text-shadow: 0 0 15px rgba(0, 217, 255, 0.5),
+                 0 0 25px rgba(0, 217, 255, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(0, 217, 255, 0.8),
+                 0 0 35px rgba(0, 217, 255, 0.5);
+  }
+}
+
+.ballot-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Ballot Content */
+.ballot-content {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-2xl);
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(0, 217, 255, 0.2);
+}
+
+.positions-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Position Row */
+.position-row {
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.position-row:nth-child(1) { animation-delay: 0.1s; }
+.position-row:nth-child(2) { animation-delay: 0.15s; }
+.position-row:nth-child(3) { animation-delay: 0.2s; }
+.position-row:nth-child(4) { animation-delay: 0.25s; }
+.position-row:nth-child(5) { animation-delay: 0.3s; }
+.position-row:nth-child(6) { animation-delay: 0.35s; }
+.position-row:nth-child(7) { animation-delay: 0.4s; }
+.position-row:nth-child(8) { animation-delay: 0.45s; }
+.position-row:nth-child(9) { animation-delay: 0.5s; }
+.position-row:nth-child(10) { animation-delay: 0.55s; }
+
+.position-row-title {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid rgba(0, 217, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.candidates-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Progress Bar */
+.ballot-progress {
+  max-width: 600px;
+  margin: 1.5rem auto;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: var(--border-light);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary-color), var(--accent-cyan));
+  transition: width var(--transition-slow);
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* View Mode Toggle */
+.view-mode-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.toggle-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--border-color);
+  background: white;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.toggle-btn.active {
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-cyan));
+  color: white;
+  border-color: transparent;
+  box-shadow: var(--shadow-glow), var(--shadow-md);
+  transform: scale(1.02);
+}
+
+.toggle-btn:hover:not(.active) {
+  border-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Party View */
+.party-view {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.party-section {
+  background: white;
+  border-radius: var(--radius-2xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+  transition: all var(--transition-base);
+}
+
+.party-section:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+}
+
+.party-name {
+  color: var(--primary-color);
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+/* Position View */
+.position-view {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.position-section {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.position-title {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Candidates Grid */
+.candidates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Candidate Card */
+.candidate-card {
+  background: white;
+  border: 3px solid var(--border-light);
+  border-radius: var(--radius-2xl);
+  padding: 2rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  text-align: center;
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+  min-width: 280px;
+  max-width: 350px;
+  flex: 1;
+}
+
+.candidate-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 217, 255, 0.3);
+  border-color: var(--secondary-color);
+}
+
+.candidate-card.selected {
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 245, 255, 0.15));
+  border-color: var(--secondary-color);
+  border-width: 4px;
+  box-shadow: 0 20px 30px -5px rgba(0, 217, 255, 0.3), 0 0 25px rgba(0, 217, 255, 0.5);
+  transform: translateY(-8px) scale(1.05);
+}
+
+.candidate-card.selected::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-cyan));
+  border-radius: var(--radius-2xl);
+  z-index: -1;
+  opacity: 0.2;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.02); }
+}
+
+.candidate-photo {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--border-color);
+  transition: all var(--transition-base);
+}
+
+.candidate-card:hover .candidate-photo {
+  border-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.candidate-card.selected .candidate-photo {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+.photo-placeholder {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+  border: 4px solid var(--border-color);
+  transition: all var(--transition-base);
+}
+
+.candidate-card:hover .photo-placeholder {
+  border-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.candidate-card.selected .photo-placeholder {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+.candidate-info {
+  margin-top: 0.5rem;
+}
+
+.candidate-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.candidate-party {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  background: rgba(0, 217, 255, 0.1);
+  padding: 0.375rem 1rem;
+  border-radius: var(--radius-md);
+  display: inline-block;
+}
+
+.selected-indicator {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--success-color);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.4);
+  animation: checkmark 0.3s ease-in-out;
+}
+
+@keyframes checkmark {
+  0% { transform: scale(0) rotate(-45deg); }
+  50% { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Ballot Actions */
+.ballot-actions, .review-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
+}
+
+/* Review Page Specific */
+.review-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.voter-info-card, .selections-card, .warning-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 2rem;
+}
+
+.voter-info-card h3, .selections-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-row .label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.info-row .value {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.selections-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.selection-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--border-color);
+}
+
+.selection-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.selection-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder-small {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.selection-details {
+  flex: 1;
+}
+
+.position-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.candidate-name-large {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.party-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.selection-check {
+  font-size: 1.5rem;
+  color: var(--success-color);
+  flex-shrink: 0;
+}
+
+.warning-card {
+  background: #fef3c7;
+  border: 2px solid var(--warning-color);
+}
+
+.warning-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.warning-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.warning-content h4 {
+  color: var(--warning-color);
+  margin-bottom: 0.75rem;
+}
+
+.warning-content ul {
+  margin-left: 1.5rem;
+  line-height: 1.8;
+}
+
+.warning-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.loading-dialog {
+  background: white;
+  border-radius: var(--radius-2xl);
+  padding: 3rem 4rem;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.loading-spinner-large {
+  width: 60px;
+  height: 60px;
+  border: 5px solid var(--border-color);
+  border-top-color: var(--secondary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1.5rem;
+}
+
+.loading-dialog h3 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.loading-dialog p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Review Page Redesign */
+.review-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.review-header-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: bounce 1s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.review-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.review-subtitle {
+  color: white;
+  font-size: 1.125rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.review-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.review-info-banner {
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-cyan));
+  border: 2px solid var(--secondary-color);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
+  box-shadow: 0 8px 20px rgba(0, 217, 255, 0.3);
+}
+
+.info-icon {
+  font-size: 2rem;
+}
+
+.review-info-banner strong {
+  color: white;
+  font-size: 1.125rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.review-info-banner p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.selections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.selection-card {
+  background: white;
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-base);
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.selection-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  border-color: var(--secondary-color);
+}
+
+.selection-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.position-badge {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.check-icon {
+  background: var(--success-color);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+.selection-card-body {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.candidate-avatar-small {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.candidate-avatar-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  border: 3px solid var(--border-color);
+}
+
+.candidate-details {
+  flex: 1;
+}
+
+.candidate-name-review {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.party-tag {
+  background: rgba(0, 217, 255, 0.15);
+  color: var(--secondary-color);
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.loading-text {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.review-warning-card {
+  background: linear-gradient(135deg, var(--warning-color), #F59E0B);
+  border: 3px solid #D97706;
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+  box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
+}
+
+.warning-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.warning-content h3 {
+  color: white;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.warning-content p {
+  color: white;
+  line-height: 1.6;
+}
+
+.review-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+}
+
+.btn-submit {
+  min-width: 200px;
+  position: relative;
+}
+
+.button-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Confirmation Modal */
+.modal-card {
+  background: white;
+  border-radius: var(--radius-2xl);
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  border: 2px solid rgba(0, 217, 255, 0.2);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-icon {
+  text-align: center;
+  padding: 2rem 2rem 0;
+}
+
+.modal-icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(251, 191, 36, 0.2));
+  border: 3px solid var(--warning-color);
+  font-size: 2.5rem;
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px 10px rgba(245, 158, 11, 0.2);
+  }
+}
+
+.modal-header {
+  padding: 1.5rem 2rem 0.5rem;
+  text-align: center;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.modal-body {
+  padding: 1rem 2rem 2rem;
+  text-align: center;
+}
+
+.modal-message {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.modal-footer {
+  padding: 1.5rem 2rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  background: var(--bg-secondary);
+}
+
+.btn-modal {
+  min-width: 120px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+}
+
+/* Old modal styles for backward compatibility */
+.modal-content {
+  background: white;
+  border-radius: var(--radius-xl);
+  max-width: 500px;
+  width: 100%;
+  box-shadow: var(--shadow-xl);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+.modal-info .modal-header {
+  background: var(--info-color);
+  color: white;
+  border-bottom: none;
+}
+
+.modal-warning .modal-header {
+  background: var(--warning-color);
+  color: white;
+  border-bottom: none;
+}
+
+.modal-danger .modal-header {
+  background: var(--danger-color);
+  color: white;
+  border-bottom: none;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-body p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.modal-footer {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.btn-danger {
+  background: var(--danger-color);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .candidates-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .candidate-card {
+    padding: 1rem;
+  }
+  
+  .candidate-photo, .photo-placeholder {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .ballot-actions, .review-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .ballot-actions button, .review-actions button {
+    width: 100%;
+  }
+  
+  .selection-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Review Page Responsive */
+  .review-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .review-header {
+    margin-bottom: 2rem;
+  }
+
+  .review-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .review-header-icon {
+    font-size: 3rem;
+  }
+
+  .review-subtitle {
+    font-size: 1rem;
+  }
+
+  .review-info-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.25rem;
+  }
+
+  .review-info-banner strong {
+    font-size: 1rem;
+  }
+
+  .review-info-banner p {
+    font-size: 0.875rem;
+  }
+
+  .selections-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .selection-card {
+    padding: 1.25rem;
+  }
+
+  .selection-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .position-badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+
+  .selection-card-body {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .candidate-avatar-small,
+  .avatar-placeholder {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .candidate-name-review {
+    font-size: 1.125rem;
+  }
+
+  .party-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.625rem;
+  }
+
+  .review-warning-card {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .warning-icon {
+    font-size: 2rem;
+  }
+
+  .warning-content h3 {
+    font-size: 1.125rem;
+  }
+
+  .warning-content p {
+    font-size: 0.9rem;
+  }
+
+  .review-actions {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn-submit {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .loading-dialog {
+    padding: 2rem 2.5rem;
+    margin: 1rem;
+  }
+
+  .loading-dialog h3 {
+    font-size: 1.25rem;
+  }
+
+  .loading-dialog p {
+    font-size: 0.875rem;
+  }
+
+  /* Modal Responsive */
+  .modal-card {
+    width: 95%;
+    max-width: 450px;
+  }
+
+  .modal-icon {
+    padding: 1.5rem 1.5rem 0;
+  }
+
+  .modal-icon-circle {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-message {
+    font-size: 0.95rem;
+  }
+
+  .modal-header {
+    padding: 1.25rem 1.5rem 0.5rem;
+  }
+
+  .modal-body {
+    padding: 0.75rem 1.5rem 1.5rem;
+  }
+
+  .modal-footer {
+    padding: 1.25rem 1.5rem 1.5rem;
+    flex-direction: column;
+  }
+
+  .btn-modal {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .view-mode-toggle {
+    flex-direction: column;
+  }
+  
+  .toggle-btn {
+    width: 100%;
+  }
+
+  /* Review Page Small Mobile */
+  .ballot-container,
+  .review-container {
+    padding: 1rem 0.75rem;
+  }
+
+  .ballot-content {
+    padding: 1.5rem;
+  }
+
+  .review-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .review-header-icon {
+    font-size: 2.5rem;
+  }
+
+  .review-info-banner {
+    padding: 1rem;
+  }
+
+  .info-icon {
+    font-size: 1.5rem;
+  }
+
+  .review-info-banner strong {
+    font-size: 0.9rem;
+  }
+
+  .review-info-banner p {
+    font-size: 0.8rem;
+  }
+
+  .selection-card {
+    padding: 1rem;
+  }
+
+  .position-badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .check-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+
+  .candidate-avatar-small,
+  .avatar-placeholder {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+
+  .candidate-name-review {
+    font-size: 1rem;
+  }
+
+  .party-tag {
+    font-size: 0.7rem;
+  }
+
+  .review-warning-card {
+    padding: 1.25rem;
+  }
+
+  .warning-icon {
+    font-size: 1.75rem;
+  }
+
+  .warning-content h3 {
+    font-size: 1rem;
+  }
+
+  .warning-content p {
+    font-size: 0.85rem;
+  }
+
+  .btn-large {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .loading-dialog {
+    padding: 1.5rem 2rem;
+    margin: 0.75rem;
+  }
+
+  .loading-spinner-large {
+    width: 50px;
+    height: 50px;
+    border-width: 4px;
+  }
+
+  .loading-dialog h3 {
+    font-size: 1.125rem;
+  }
+
+  .loading-dialog p {
+    font-size: 0.8rem;
+  }
+
+  /* Modal Mobile */
+  .modal-card {
+    width: 95%;
+    max-width: 100%;
+    margin: 1rem;
+  }
+
+  .modal-icon {
+    padding: 1.25rem 1rem 0;
+  }
+
+  .modal-icon-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 1.75rem;
+  }
+
+  .modal-title {
+    font-size: 1.25rem;
+  }
+
+  .modal-message {
+    font-size: 0.9rem;
+  }
+
+  .modal-header {
+    padding: 1rem 1.25rem 0.5rem;
+  }
+
+  .modal-body {
+    padding: 0.75rem 1.25rem 1.25rem;
+  }
+
+  .modal-footer {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+
+  .btn-modal {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
