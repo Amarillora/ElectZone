@@ -57,6 +57,18 @@ function Review({ voter, selections, onLogout }) {
         navigate('/ballot')
         return
       }
+
+      // Validate all selections are present
+      const selectionCount = Object.keys(selections).length
+      console.log('Review: Selection count:', selectionCount)
+      console.log('Review: Selections:', selections)
+
+      if (selectionCount !== 10) {
+        alert(`Error: You must select exactly 10 positions. You have selected ${selectionCount}.`)
+        setSubmitting(false)
+        navigate('/ballot')
+        return
+      }
       
       // Generate vote token
       const voteToken = generateVoteToken()
@@ -65,6 +77,14 @@ function Review({ voter, selections, onLogout }) {
       const payload = createVotePayload(selections, election.id)
       
       console.log('Vote Payload:', payload)
+      console.log('Number of selections in payload:', payload.selections.length)
+
+      // Verify payload has 10 selections
+      if (payload.selections.length !== 10) {
+        alert(`Error: Invalid vote payload. Expected 10 selections, got ${payload.selections.length}.`)
+        setSubmitting(false)
+        return
+      }
 
       // Create payload hash
       const payloadHash = await createPayloadHash(payload)

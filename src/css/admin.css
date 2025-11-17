@@ -671,22 +671,69 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .admin-container {
+    padding: 1.5rem 1rem;
+  }
+
   .admin-content-wrapper {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
   }
 
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .turnout-chart {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-content-wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .admin-header-card h1 {
+    font-size: 2rem;
+  }
+
+  .admin-header-card p {
+    font-size: 0.95rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1.25rem;
+  }
+
+  .stat-icon {
+    font-size: 2.5rem;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+  }
+
   .data-table {
     min-width: 500px;
+    font-size: 0.875rem;
   }
 
   .admin-tabs {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-btn {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9rem;
   }
 
   .info-grid {
@@ -696,6 +743,15 @@
   .turnout-chart {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .turnout-circle {
+    width: 180px;
+    height: 180px;
+  }
+
+  .turnout-percentage {
+    font-size: 2rem;
   }
 
   .chart-bar-label {
@@ -716,19 +772,131 @@
   .data-table td {
     padding: 0.75rem 0.5rem;
   }
+
+  .chart-card,
+  .table-card,
+  .election-info-card,
+  .turnout-card {
+    padding: 1.5rem;
+  }
+
+  .navbar-container {
+    padding: 0 1rem;
+  }
 }
 
 @media (max-width: 480px) {
+  .admin-content-wrapper {
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .admin-header-card h1 {
+    font-size: 1.75rem;
+  }
+
+  .admin-header-card p {
+    font-size: 0.875rem;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
 
   .stat-card {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    text-align: left;
+    padding: 1rem;
   }
 
-  .admin-header-card h1 {
+  .stat-icon {
     font-size: 2rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .tab-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .turnout-circle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .turnout-percentage {
+    font-size: 1.75rem;
+  }
+
+  .turnout-stat {
+    padding: 1rem;
+  }
+
+  .turnout-stat-value {
+    font-size: 1.5rem;
+  }
+
+  .chart-card,
+  .table-card,
+  .election-info-card,
+  .turnout-card {
+    padding: 1rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.8rem;
+  }
+
+  .candidate-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 0.875rem;
+  }
+
+  .rank-badge {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .percentage-bar {
+    max-width: 100px;
+    height: 20px;
+  }
+
+  .percentage-text {
+    font-size: 0.7rem;
+  }
+
+  .navbar-logo {
+    font-size: 1.25rem;
+  }
+
+  .nav-user-info {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+  }
+
+  .user-name {
+    font-size: 0.75rem;
+  }
+
+  .admin-badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .nav-logout-btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
   }
 }
